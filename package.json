@@ -1,5 +1,5 @@
 {
-  "name": "@onsvisual/scroll-engine",
+  "name": "@onsvisual/svelte-scrolly",
   "version": "0.0.1",
   "scripts": {
     "build": "rollup -c",
