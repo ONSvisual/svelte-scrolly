@@ -1,9 +1,9 @@
 
 # Scrollytelling Template
 
-A component-based rich media / scrollytelling template made with Svelte.
+A component-based rich media / scrollytelling template made with Svelte. ([View demo](https://onsvisual.github.io/svelte-scrolly)).
 
-The easiest way to build a project from this template is to clone it using [degit](https://github.com/Rich-Harris/degit), which just creates a local copy of the files (not a Git branch). You can also hack it live in [this Svelte REPL](https://svelte.dev/repl/58155faba1ea463eaf4d9ec6f3f95364?version=3.32.3).
+The easiest way to build a project from this template is to clone it using [degit](https://github.com/Rich-Harris/degit), which just creates a local copy of the files (not a Git branch). You can also hack it live [here](https://svelte.dev/repl/58155faba1ea463eaf4d9ec6f3f95364?version=3.32.3).
 
 ## Getting started
 
@@ -82,3 +82,5 @@ If you need to add component-specific styling within your project, you can do th
 This component will take a bit of time to get your head around. Within each Scoller component you'll find two parent elements, `<div  slot="background"/>` and `<div  slot="foreground">`. The background div contains the full-screen map, chart or media that you are animating/manipulating, and the foreground slot contains a series of `<section/>` elements, which contain the text captions.
 
 The essential thing to understand is that each section is automatically tracked and bound to an `index` value (in Javascript), starting from zero. In the demo, these indices are bound to an array, and each Scroller has an associated array of Javascript functions (there are two in the demo, `chartActions` and `mapActions`)  that control the interactions for each caption. If there is no interaction for a particular caption, then it needs a `null` value in this array, or a repetion of the previous function (depending what interaction you need).
+
+The Scroller component has other features not used in the demo, including tracking the exact progress between captions, or within a whole Scroller section, which can be used for more complex continuous interactions (rather than step-based). All of the features are [documented here](https://github.com/sveltejs/svelte-scroller).

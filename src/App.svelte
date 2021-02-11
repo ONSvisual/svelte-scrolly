@@ -13,17 +13,30 @@
 	import Divider from "./Divider.svelte";
 	import Map from "./Map.svelte";
 
+	// STYLE CONFIG
 	// Set theme globally (options are 'light' or 'dark')
 	let theme = "light";
 	setContext("theme", theme);
 	setColors(themes, theme);
 
-	// CHART CODE
-	const categories = regions.map((d) => d.code);
-	const url =
-		"https://raw.githubusercontent.com/bothness/geo-data/main/csv/imd-values-2019.csv";
-	const catKey = "region_code";
+	// SCROLLYTELLING CONFIG
+	// Config
+	const top = 0;
+	const threshold = 0.65;
+	const bottom = 1;
+	// State
+	let index = [];
+	let indexPrev = [];
+	onMount(() => {
+		indexPrev = [...index];
+	});
 
+	// CHART CODE
+	// Config
+	const categories = regions.map((d) => d.code);
+	const url = "https://raw.githubusercontent.com/bothness/geo-data/main/csv/imd-values-2019.csv";
+	const catKey = "region_code";
+	// State
 	let data;
 	let places;
 	let selected;
@@ -43,37 +56,11 @@
 						name: d.lad_name,
 					});
 				}
-			});
-			array.sort((a, b) => a.name.localeCompare(b.name));
-			places = array;
 		});
-	
-	// MAP CODE
-	// Config
-	const mapstyle = 'https://bothness.github.io/ons-basemaps/data/style-omt.json';
-	const mapbounds = {
-		ew: [[-5.816, 49.864], [1.863, 55.872]],
-		fareham: [[-1.2280, 50.8368], [-1.1650, 50.8699]],
-		newport: [[-3.0682, 51.5448], [-2.9170, 51.6258]]
-	};
-	// State
-	let map = null;
-
-	// SCROLLYTELLING CODE
-	// Config
-	const top = 0;
-	const threshold = 0.65;
-	const bottom = 1;
-	// State
-	let count = [];
-	let index = [];
-	let indexPrev = [];
-	let offset = [];
-	let progress = [];
-	onMount(() => {
-		indexPrev = [...index];
+		array.sort((a, b) => a.name.localeCompare(b.name));
+		places = array;
 	});
-
+	
 	// Actions for CHART scroller
 	const chartActions = [
 		() => {
@@ -89,13 +76,6 @@
 			yKey = "health";
 		}
 	];
-
-	// Actions for MAP scroller
-	const mapActions = [
-		() => { map.fitBounds(mapbounds.ew) },
-		() => { map.fitBounds(mapbounds.fareham) },
-		() => { map.fitBounds(mapbounds.newport) }
-	];
 	
 	// Reactive code to trigger CHART actions
 	$: if (index[0] != indexPrev[0]) {
@@ -104,6 +84,24 @@
 		}
 		indexPrev[0] = index[0];
 	}
+	
+	// MAP CODE
+	// Config
+	const mapstyle = 'https://bothness.github.io/ons-basemaps/data/style-omt.json';
+	const mapbounds = {
+		ew: [[-5.816, 49.864], [1.863, 55.872]],
+		fareham: [[-1.2280, 50.8368], [-1.1650, 50.8699]],
+		newport: [[-3.0682, 51.5448], [-2.9170, 51.6258]]
+	};
+	// State
+	let map = null;
+
+	// Actions for MAP scroller
+	const mapActions = [
+		() => { map.fitBounds(mapbounds.ew) },
+		() => { map.fitBounds(mapbounds.fareham) },
+		() => { map.fitBounds(mapbounds.newport) }
+	];
 	
 	// Reactive code to trigger MAP actions
 	$: if (map && index[1] != indexPrev[1]) {
@@ -174,7 +172,7 @@
 	</p>
 </Section>
 
-<Scroller {top} {threshold} {bottom} bind:count={count[0]} bind:index={index[0]} bind:offset={offset[0]} bind:progress={progress[0]} >
+<Scroller {top} {threshold} {bottom} bind:index={index[0]}>
 	<div slot="background">
 		<figure>
 			<div class="col-wide height-full" style="position: relative; top: 45px;">
@@ -258,7 +256,7 @@
 	</p>
 </Section>
 
-<Scroller {top} {threshold} {bottom} bind:count={count[1]} bind:index={index[1]} bind:offset={offset[1]} bind:progress={progress[0]}>
+<Scroller {top} {threshold} {bottom} bind:index={index[1]}>
 	<div slot="background">
 		<figure>
 			<div class="col-full height-full">

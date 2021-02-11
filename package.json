@@ -1,10 +1,12 @@
 {
   "name": "@onsvisual/svelte-scrolly",
+  "homepage": "http://onsvisual.github.io/svelte-scrolly",
   "version": "0.0.1",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public"
+    "start": "sirv public",
+    "deploy": "gh-pages -d public"
   },
   "author": "Ahmad Barclay",
   "license": "MIT",
@@ -13,8 +15,9 @@
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@sveltejs/svelte-scroller": "latest",
-    "mapbox-gl": "1.13.0",
     "d3-dsv": "latest",
+    "gh-pages": "^3.1.0",
+    "mapbox-gl": "1.13.0",
     "rollup": "^2.3.4",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^6.0.0",
