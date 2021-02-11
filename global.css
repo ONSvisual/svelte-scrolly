@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+/* GLOBALS */
+
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	color: var(--text);
+	background-color: var(--background);
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Open Sans", "Helvetica Neue", "Arial", sans-serif;
+	font-size: 21px;
+	line-height: 1.5;
+	word-wrap: break-word;
+}
+
+/* COMPONENTS */
+
+a {
+	color: #206095;
+}
+
+a:hover {
+	color: #323132;
+}
+
+label {
+	display: block;
+}
+
+input, button, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	-webkit-padding: 0.4em 0;
+	padding: 0.4em;
+	margin: 0 0 0.5em 0;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+
+input:disabled {
+	color: #ccc;
+}
+
+button {
+	color: #333;
+	background-color: #f4f4f4;
+	outline: none;
+}
+
+button:disabled {
+	color: #999;
+}
+
+button:not(:disabled):active {
+	background-color: #ddd;
+}
+
+button:focus {
+	border-color: #666;
+}
+
+header, section, nav, footer, figure, caption {
+	display: flex;
+	justify-content: center;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0;
+	padding: 0;
+}
+
+footer {
+	margin: 60px 0 0 0;
+}
+
+h1 {
+	font-size: 54px;
+	line-height: 1.3;
+	margin: 30px 0 0 0;
+}
+
+h2 {
+	font-size: 30px;
+	margin: 40px 0 -20px 0;
+}
+
+h3 {
+	font-size: 22px;
+	margin: 40px 0 -10px 0;
+}
+
+p {
+	margin: 30px 0 0 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
+blockquote {
+	margin: 30px 0 6px 0;
+	font-size: 30px;
+	color: var(--muted);
+}
+
+/* CLASSES */
+
+.col-full {
+	width: 100%;
+}
+
+.col-wide {
+	width: 100%;
+	max-width: 980px;
+	margin: 0 24px;
+}
+
+.col-medium {
+	width: 100%;
+	max-width: 680px;
+	margin: 0 24px;
+}
+
+.height-full {
+	min-height: 100vh;
+}
+
+.center {
+	text-align: center;
+}
+
+.middle {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.caption {
+	margin-top: 8px;
+	text-align: left;
+	font-size: 14px;
+	color: var(--muted);
+}
+
+.inset-medium {
+	max-width: 680px;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+.inset-narrow {
+	max-width: 480px;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+.text-big {
+	font-size: 30px;
+	margin: 20px 0;
+}
+
+.text-indent {
+	margin-left: 30px;
+}
+
+.text-shadow {
+	text-shadow: 0 0 8px #000;
+}
+
+.arrow-down {
+	background-color: var(--text);
+	-webkit-mask: url(./img/scroll-down.svg) no-repeat center;
+	mask: url(./img/scroll-down.svg) no-repeat center;
+	width: 48px;
+	height: 48px;
+	margin: 0 auto;
+}
+
+.grid {
+	display: grid;
+  grid-gap: 12px;
+	grid-template-columns: repeat(auto-fill, 100%);
+	margin: 40px 0 0 0 ;
+}
+
+.grid-narrow {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+}
+
+.grid-medium {
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+}
+
+.grid-wide {
+	grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)) !important;
+}
+
+.grid > div {
+	min-height: 200px;
+}
+
+.mt {
+	margin-top: 72px;
+}
+
+.mb {
+	margin-bottom: 40px;
+}
+
+.em {
+	padding: 2px 4px 2px 4px;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+.em-muted {
+	background-color: var(--muted);
+	color: #fff;
+}
+
+.label-block {
+	display: inline-block;
+	text-align: right;
+	width: 85px;
+}
+
+/* SCROLL-SPECIFIC ELEMENTS */
+
+[slot="background"] {
+	overflow: hidden;
+}
+
+[slot="foreground"] {
+	pointer-events: none;
+}
+
+[slot="foreground"] section {
+	padding: 100vh 0 100vh 0;
+}
+
+[slot="foreground"] section + section {
+	padding: 0 0 100vh 0;
+}
+
+[slot="foreground"] section div {
+	padding: 12px;
+	pointer-events: all;
+	position: relative;
+}
+
+[slot="foreground"] section div::before {
+	content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+	background-color: var(--background);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+[slot="foreground"] section div p {
+	margin: 0;
+}
+
+[slot="foreground"] section div p + p {
+	margin-top: 30px;
+}
+
+[slot="foreground"] section div h3 {
+	margin: 10px 0 20px 0;
+}
