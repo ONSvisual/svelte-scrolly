@@ -3,12 +3,13 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import babel from 'rollup-plugin-babel'
 
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
 	let server;
-	
+
 	function toExit() {
 		if (server) server.kill(0);
 	}
@@ -43,7 +44,9 @@ export default {
 			// a separate file - better for performance
 			css: css => {
 				css.write('bundle.css');
-			}
+			},
+			//output in legacy mode (es5 compatible) to support IE11
+			legacy:true
 		}),
 
 		// If you have external dependencies installed from
@@ -64,6 +67,35 @@ export default {
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production
 		!production && livereload('public'),
+
+    // compile to ES 2015 in oder to support chromium 59+
+		production && babel({
+			extensions: ['.js', '.mjs', '.html', '.svelte'],
+			runtimeHelpers: true,
+			exclude: ['node_modules/@babel/**', 'node_modules/core-js/**'],
+			presets: [
+				[
+					'@babel/preset-env',
+					{
+						targets: {
+							ie: '11',
+							chrome: '59',
+						},
+						useBuiltIns: 'usage',
+						corejs: 3,
+					},
+				],
+			],
+			plugins: [
+				'@babel/plugin-syntax-dynamic-import',
+				[
+					'@babel/plugin-transform-runtime',
+					{
+						useESModules: true,
+					},
+				],
+			],
+		}),
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
