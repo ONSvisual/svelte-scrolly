@@ -16,10 +16,17 @@
 	<link rel='stylesheet' href='./global.css' />
 	<link rel='stylesheet' href='./build/bundle.css' />
 
-	<script defer src='./build/bundle.js'></script>
+	<script>
+		function loadScript() {
+			let script = document.createElement('script');
+			script.src = 'fetch' in window ? './build/bundle.js' : './build/bundle.legacy.js';
+			script.defer = true;
+			document.body.appendChild(script);
+		}
+	</script>
 </head>
 
-<body>
+<body onload="loadScript()">
 </body>
 
 </html>
