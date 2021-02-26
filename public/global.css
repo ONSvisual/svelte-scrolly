@@ -269,10 +269,9 @@ svelte-scroller-background-container {
 
 @media (min-width: 992px) {
 	.splitscreen svelte-scroller-background {
-		position: absolute !important;
 		width: calc(100% - 480px) !important;
-		min-width: 60%;
-		right: 0;
+		min-width: 65%;
+		margin: 0 0 0 auto;
 	}
 	.splitscreen [slot="foreground"] section div::before {
 		opacity: 0;

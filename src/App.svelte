@@ -166,16 +166,19 @@
 <Section>
 	<h2>This is a dynamic chart section</h2>
 	<p>
-		The chart below will respond to the captions as you scroll down.
+		The chart below will respond to the captions as you scroll down. 
+		The mode is set to splitscreen, with captions on the left on larger screens.
 	</p>
 </Section>
 
 <Scroller {threshold} bind:index={index[0]} splitscreen={true}>
 	<div slot="background">
 		<figure>
-			<div class="col-wide height-full" style="position: relative; top: 45px;">
+			<div class="col-wide height-full middle">
 				{#if data && xKey && yKey}
-				<ScatterChart diameter={3} {data} {xKey} {yKey} {catKey} {colors} {categories} {selected} />
+				<div class="chart">
+					<ScatterChart diameter={3} {data} {xKey} {yKey} {catKey} {colors} {categories} {selected} />
+				</div>
 				{/if}
 			</div>
 		</figure>
@@ -184,17 +187,20 @@
 	<div slot="foreground">
 		<section>
 			<div class="col-medium">
-				<p>There is a strong correlation between the IMD mesasures for <span class="em em-muted">income</span> and <span class="em em-muted">employment</span>.</p>
+				<p>There is a strong correlation between the IMD mesasures for <span class="em em-muted">income</span> 
+					and <span class="em em-muted">employment</span>.</p>
 			</div>
 		</section>
 		<section>
 			<div class="col-medium">
-				<p>There is a strong correlation between the IMD mesasures for <span class="em em-muted">income</span> and <span class="em em-muted">health</span>.</p>
+				<p>There is a strong correlation between the IMD mesasures for <span class="em em-muted">income</span> and 
+					<span class="em em-muted">health</span>.</p>
 			</div>
 		</section>
 		<section>
 			<div class="col-medium">
-				<p>There is a weak correlation between the IMD mesasures for <span class="em em-muted">housing</span> and <span class="em em-muted">health</span>.</p>
+				<p>There is a weak correlation between the IMD mesasures for <span class="em em-muted">housing</span> and 
+					<span class="em em-muted">health</span>.</p>
 			</div>
 		</section>
 		<section>
@@ -256,7 +262,8 @@
 <Section>
 	<h2>This is a dynamic map section</h2>
 	<p class="mb">
-		The map below will respond to the captions as you scroll down.
+		The map below will respond to the captions as you scroll down. 
+		The mode is default, with captions over the map on any screen size.
 	</p>
 </Section>
 
@@ -341,6 +348,11 @@
 	}
 	select {
 		width: 210px;
+	}
+	.chart {
+		margin-top: 45px;
+		height: 100vh;
+		width: calc(100% - 5px);
 	}
 	/* The properties below make the media DIVs grey, for visual purposes in demo */
 	.media {

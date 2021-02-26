@@ -70,6 +70,7 @@ export default [
 		}
 	},
 	{
+		// Output legacy code bundle for ES5 / IE11 / Chromium 59 support
 		input: 'src/main.js',
 		output: {
 			sourcemap: true,
@@ -79,9 +80,8 @@ export default [
 		},
 		plugins: [
 			svelte({
-				dev: !production,
-
-				//output in legacy mode (es5 compatible) to support IE11
+				dev: false,
+				//output in legacy mode ES5 compatible) to support IE11
 				legacy: true
 			}),
 			resolve({
@@ -90,8 +90,8 @@ export default [
 			}),
 			commonjs(),
 
-			// compile to ES 2015 in oder to support chromium 59+
-			production && babel({
+			// compile to ES 2015 in oder to support IE11 & Chromium 59+
+			babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
 				runtimeHelpers: true,
 				exclude: [
@@ -108,25 +108,21 @@ export default [
 								chrome: '59',
 							},
 							useBuiltIns: 'usage',
-							corejs: 3,
-						},
-					],
+							corejs: 3
+						}
+					]
 				],
 				plugins: [
 					'@babel/plugin-syntax-dynamic-import',
 					[
 						'@babel/plugin-transform-runtime',
 						{
-							useESModules: true,
-						},
-					],
-					'@babel/plugin-transform-template-literals'
-				],
+							useESModules: true
+						}
+					]
+				]
 			}),
-
-			// If we're building for production (npm run build
-			// instead of npm run dev), minify
-			production && terser()
+			terser()
 		],
 		watch: {
 			clearScreen: false

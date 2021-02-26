@@ -127,7 +127,7 @@
 		// re-measure outer container
 		const bcr = outer.getBoundingClientRect();
 		left = bcr.left;
-		width = bcr.right - left;
+		width = bcr.right - bcr.left;
 
 		// determine fix state
 		const fg = foreground.getBoundingClientRect();
@@ -196,6 +196,7 @@
 	svelte-scroller-outer {
 		display: block;
 		position: relative;
+		max-width: 100%;
 	}
 
 	svelte-scroller-background {
