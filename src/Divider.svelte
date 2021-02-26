@@ -6,23 +6,18 @@
   export let hr = true;
 </script>
 
-<section style="--text: {themes[theme]['text']}; --background: {themes[theme]['background']};">
+<section style="color: {themes[theme]['text']}; background-color: {themes[theme]['background']};">
 	<div class="col-medium">
     {#if hr}
-    <hr style="--muted: {themes[theme]['muted']}"/>
+    <hr style="color: {themes[theme]['muted']}"/>
     {:else}
-    <hr style="--muted: {themes[theme]['muted']}; border: none;"/>
+    <hr style="color: {themes[theme]['muted']}; border: none;"/>
     {/if}
 	</div>
 </section>
 
 <style>
-  section {
-    color: var(--text);
-    background-color: var(--background);
-  }
   hr {
-    color: var(--muted);
     width: 65px;
     border: none;
     border-top: 4px dotted;

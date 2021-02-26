@@ -2,13 +2,13 @@
 	import { setContext, onMount } from "svelte";
 	import { getData, setColors } from "./utils.js";
 	import { themes, regions, colors, datakeys } from './config.js';
-	import Scroller from "@sveltejs/svelte-scroller";
 	import { ScatterChart } from "@onsvisual/svelte-charts";
 	import ONSHeader from "./ONSHeader.svelte";
 	import ONSFooter from "./ONSFooter.svelte";
 	import Header from "./Header.svelte";
 	import Section from "./Section.svelte";
 	import Media from "./Media.svelte";
+	import Scroller from "./Scroller.svelte";
 	import Filler from "./Filler.svelte";
 	import Divider from "./Divider.svelte";
 	import Map from "./Map.svelte";
@@ -21,9 +21,7 @@
 
 	// SCROLLYTELLING CONFIG
 	// Config
-	const top = 0;
 	const threshold = 0.65;
-	const bottom = 1;
 	// State
 	let index = [];
 	let indexPrev = [];
@@ -113,16 +111,16 @@
 
 </script>
 
-<ONSHeader theme="dark" />
+<ONSHeader filled={true} />
 
 <Header bgimage="./img/bg-dark.jpg" bgfixed={true} theme="dark">
 	<h1 class="text-shadow">This is the title of the article</h1>
 	<p class="inset-medium text-big text-shadow">
 		This is a short text description of the article that might take up a couple of lines
 	</p>
-	<div class="mt text-shadow">
-		<small>Scroll to begin</small><br />
-		<div class="arrow-down" style="background-color: #eee;"></div>
+	<div class="text-shadow" style="margin-top: 48px;">
+		Scroll to begin<br />
+		<img src="./img/scroll-down-white.svg" class="svg-icon bounce" alt="down arrow"/>
 	</div>
 </Header>
 
@@ -172,7 +170,7 @@
 	</p>
 </Section>
 
-<Scroller {top} {threshold} {bottom} bind:index={index[0]}>
+<Scroller {threshold} bind:index={index[0]} splitscreen={true}>
 	<div slot="background">
 		<figure>
 			<div class="col-wide height-full" style="position: relative; top: 45px;">
@@ -203,19 +201,24 @@
 			<div class="col-medium">
 				<h3>Explore the data</h3>
 				{#if data}
+				<nobr>
 					<span class="label-block">X Axis</span>
 					<select bind:value={xKey}>
 						{#each Object.keys(datakeys) as key}
 							<option value={key}>{datakeys[key]}</option>
 						{/each}
 					</select>
+				</nobr>
+				<nobr>
 					<span class="label-block">Y Axis</span>
 					<select bind:value={yKey}>
 						{#each Object.keys(datakeys) as key}
 							<option value={key}>{datakeys[key]}</option>
 						{/each}
-					</select><br />
-					{#if places}
+					</select>
+				</nobr>
+				{#if places}
+				<nobr>
 						<span class="label-block">District</span>
 						<!-- svelte-ignore a11y-no-onchange -->
 						<select bind:value={selected}>
@@ -226,7 +229,8 @@
 								</option>
 							{/each}
 						</select>
-					{/if}
+					</nobr>
+				{/if}
 				{/if}
 			</div>
 		</section>
@@ -243,8 +247,8 @@
 	</p>
 </Section>
 
-<Media col="full" caption="This is an optional caption for the above media.">
-	<div class="media" style="height: 600px;">full-bleed media</div>
+<Media col="full" height={600} caption="This is an optional caption for the above media.">
+	<div class="media">full-bleed media</div>
 </Media>
 
 <Divider />
@@ -256,7 +260,7 @@
 	</p>
 </Section>
 
-<Scroller {top} {threshold} {bottom} bind:index={index[1]}>
+<Scroller {threshold} bind:index={index[1]}>
 	<div slot="background">
 		<figure>
 			<div class="col-full height-full">
@@ -313,12 +317,44 @@
 <ONSFooter />
 
 <style>
+	/* Styles specific to elements within the demo */
+	.svg-icon {
+		width: 48px;
+		height: 48px;
+	}
+	.bounce {
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-name: bounce;
+		animation-timing-function: ease;
+	}
+	@keyframes bounce {
+		0%   { transform: translateY(10px); }
+		30%  { transform: translateY(-10px); }
+		50%  { transform: translateY(10px); }
+		100% { transform: translateY(10px); }
+	}
+	.label-block {
+		display: inline-block;
+		text-align: right;
+		width: 80px;
+	}
+	select {
+		width: 210px;
+	}
 	/* The properties below make the media DIVs grey, for visual purposes in demo */
 	.media {
-	  background-color: var(--pale);
+	  background-color: #f0f0f0;
+	  display: -webkit-box;
+	  display: -ms-flexbox;
 	  display: flex;
-	  flex-flow: column;
-	  justify-content: center;
+	  -webkit-box-orient: vertical;
+	  	-webkit-box-direction: normal;
+	      -ms-flex-flow: column;
+	          flex-flow: column;
+	  -webkit-box-pack: center;
+	      -ms-flex-pack: center;
+	          justify-content: center;
 	  text-align: center;
 	  color: #aaa;
   }

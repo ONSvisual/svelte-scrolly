@@ -5,15 +5,8 @@
 	export let theme = getContext('theme');
 </script>
 
-<section style="--text: {themes[theme]['text']}; --background: {themes[theme]['background']}">
+<section style="color: {themes[theme]['text']}; background-color: {themes[theme]['background']}">
 	<div class="col-medium">
 		<slot></slot>
 	</div>
 </section>
-
-<style>
-	section {
-		color: var(--text);
-		background-color: var(--background);
-	}
-</style>
