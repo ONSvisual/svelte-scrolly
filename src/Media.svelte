@@ -5,7 +5,7 @@
 	
 	const colWidths = {
 		'narrow': 200,
-		'medium': 320,
+		'medium': 330,
 		'wide': 500
 	};
 
@@ -13,8 +13,10 @@
   export let col = 'medium';
   export let grid = null;
   export let caption = null;
-	export let height = '200';
+	export let height = 200;
 	export let gap = 12;
+
+	let rowHeight = !Number.isNaN(height) ? height + 'px' : height;
 	
 	const minWidth = grid && colWidths[grid] ? colWidths[grid] : null;
 	
@@ -32,14 +34,21 @@
 	const update = debounce(resize, 200);
 	
 	function resize() {
-		divs = el.querySelectorAll('div');
+		if (el && !divs) {
+			let arr = [];
+			let children = el.childNodes;
+			children.forEach(child => {
+				if (child.nodeName == 'DIV') { arr.push(child)};
+			});
+			divs = arr;
+		};
 		count = divs.length;
 		cols = !minWidth || gridWidth <= minWidth ? 1 : Math.floor(gridWidth / minWidth);
 		makeCols();
 	}
 	
 	function makeCols() {
-		let r = Math.ceil(count / cols) > 1 ? `-ms-grid-rows: ${height}px (${gap}px ${height}px)[${Math.ceil(count / cols) - 1}]; grid-template-rows: ${height}px repeat(${Math.ceil(count / cols) - 1}, ${gap}px ${height}px);` : `-ms-grid-rows: ${height}px; grid-template-rows: ${height}px;`;
+		let r = Math.ceil(count / cols) > 1 ? `-ms-grid-rows: ${rowHeight} (${gap}px ${rowHeight})[${Math.ceil(count / cols) - 1}]; grid-template-rows: ${rowHeight} repeat(${Math.ceil(count / cols) - 1}, ${gap}px ${rowHeight});` : `-ms-grid-rows: ${rowHeight}; grid-template-rows: ${rowHeight};`;
 		let c = cols > 1 ? `-ms-grid-columns: 1fr (${gap}px 1fr)[${cols - 1}]; grid-template-columns: 1fr repeat(${cols - 1}, ${gap}px 1fr);` : '';
 		el.style.cssText = r + c;
 		divs.forEach((div, i) => {

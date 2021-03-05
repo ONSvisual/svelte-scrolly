@@ -18,9 +18,9 @@
 
 <style>
   hr {
-    width: 65px;
+    width: 75px;
     border: none;
-    border-top: 4px dotted;
+    border-top: 2px solid;
     margin: 40px auto -10px auto;
   }
 </style>
