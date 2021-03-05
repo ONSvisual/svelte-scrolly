@@ -119,6 +119,10 @@ blockquote {
 	color: #777;
 }
 
+small {
+	font-size: 14px;
+}
+
 /* CLASSES */
 
 .col-full {
