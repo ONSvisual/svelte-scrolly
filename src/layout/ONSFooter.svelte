@@ -1,5 +1,5 @@
 <script>
-	import { themes } from './config.js';
+	import { themes } from '../config.js';
 	import { getContext } from 'svelte';
 
 	export let theme = getContext('theme');
@@ -7,20 +7,22 @@
 
 <footer style="color: {themes[theme]['text']}; background-color: {themes[theme]['pale']};">
 	<div class="col-wide" data-analytics="footer">
-		{#if theme == 'dark'}
-		<img
-			class="logo-img"
-			src="./img/ons-logo-neg-en.svg"
-			alt="Office for National Statistics" />
-		{:else}
-		<img
-			class="logo-img"
-			src="./img/ons-logo-black-en.svg"
-			alt="Office for National Statistics" />
-		{/if}
+		<a href="https://www.ons.gov.uk/">
+			{#if theme == 'dark'}
+			<img
+				class="logo-img"
+				src="./img/ons-logo-neg-en.svg"
+				alt="Office for National Statistics" />
+			{:else}
+			<img
+				class="logo-img"
+				src="./img/ons-logo-black-en.svg"
+				alt="Office for National Statistics" />
+			{/if}
+		</a>
 		<ul>
-			<li><a href="https://www.ons.gov.uk/aboutus/contactus" class="list__link" style="color: {themes[theme]['muted']}">Contact us</a></li>
-			<li><a href="https://www.ons.gov.uk/help/privacynotice" class="list__link" style="color: {themes[theme]['muted']}">Cookies and privacy</a></li>
+			<li><a href="https://www.ons.gov.uk/aboutus/contactus" class="link" style="color: {themes[theme]['text']}">Contact us</a></li>
+			<li><a href="https://www.ons.gov.uk/help/privacynotice" class="link" style="color: {themes[theme]['text']}">Cookies and privacy</a></li>
 		</ul>
 		<hr style="border-top-color: {themes[theme]['muted']}" />
 		<div class="license">
@@ -31,10 +33,10 @@
 			All content is available under the
 			<a
 				href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-				class="external-link"
+				class="link"
 				target="_blank"
 				rel="noopener"
-				style="color: {themes[theme]['muted']}">Open Government Licence v3.0</a>, 
+				style="color: {themes[theme]['text']}">Open Government Licence v3.0</a>, 
 			except where otherwise stated
 		</div>
 	</div>
@@ -46,16 +48,16 @@
 		padding-top: 36px;
 		font-size: 18px;
 	}
-	footer a {
+	footer a.link {
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 		text-decoration: underline;
 		display: inline-block;
 	}
-	footer a:hover {
+	footer a.link:hover {
 		text-decoration: none;
 	}
-	footer a:active {
+	footer a.link:active {
 		outline: 3px solid transparent;
 		background-color: #fd0;
 		-webkit-box-shadow: 0 -2px #fd0, 0 4px #222;
@@ -88,5 +90,8 @@
 	}
 	.license {
 		vertical-align: top;
+	}
+	a img:hover {
+		cursor: pointer;
 	}
 </style>

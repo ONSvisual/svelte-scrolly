@@ -1,11 +1,11 @@
 <script>
-  import { themes } from './config.js';
+  import { themes } from '../config.js';
 	import { onMount, getContext } from 'svelte';
 	import { debounce } from 'debounce';
 	
 	const colWidths = {
 		'narrow': 200,
-		'medium': 330,
+		'medium': 310,
 		'wide': 500
 	};
 

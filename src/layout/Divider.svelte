@@ -1,5 +1,5 @@
 <script>
-	import { themes } from './config.js';
+	import { themes } from '../config.js';
 	import { getContext } from 'svelte';
 
   export let theme = getContext('theme');

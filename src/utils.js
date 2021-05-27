@@ -12,3 +12,8 @@ export async function getData(url) {
 	let data = await csvParse(string, autoType);
   return data;
 }
+
+export function getMotion() {
+  let mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)"); // Check if browser prefers reduced motion
+	return !mediaQuery || mediaQuery.matches ? false : true; // return true for motion, false for no motion
+}

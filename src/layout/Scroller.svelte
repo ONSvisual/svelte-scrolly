@@ -1,7 +1,7 @@
 <script context="module">
   // Based on svelte-scroller by Rich Harris
   // https://github.com/sveltejs/svelte-scroller
-  // Patched to transpile to IE 11
+  // Patched to transpile to IE 11 and allow for split-screen view option
 
 	const handlers = [];
 	let manager;
