@@ -155,21 +155,16 @@
 <Section>
 	<h2>This is a section title</h2>
 	<p>
-		This is a short paragraph of text to demonstrate the standard column width
-		font size and line spacing of the template.
+		This is a short paragraph of text to demonstrate the standard column width font size and line spacing of the template.
 	</p>
 	<p>
-		This is a second short paragraph of text to demonstrate the size of the
-		paragraph spacing in the template.
+		This is a second short paragraph of text to demonstrate the size of the paragraph spacing in the template.
 	</p>
 	<blockquote class="text-indent">
 		"This is an example of a large embedded quotation."&mdash;Person
 	</blockquote>
 	<p>
-		Below is a grid that could contain charts or any other kind of visual media.
-		The grid can fit in a standard, wide or full-width column, and the media
-		width itself can be narrow (min 200px), medium (min 300px), wide (min 500px)
-		or full-width. The grid is responsive, and will re-flow on smaller screens.
+		Below is a grid that could contain charts or any other kind of visual media. The grid can fit in a standard, wide or full-width column, and the media width itself can be narrow (min 200px), medium (min 300px), wide (min 500px) or full-width. The grid is responsive, and will re-flow on smaller screens.
 	</p>
 </Section>
 
@@ -220,9 +215,7 @@
 		<section>
 			<div class="col-medium">
 				<p>
-					There is a strong correlation between the IMD mesasures for <Em
-						>income</Em
-					>
+					There is a strong correlation between the IMD mesasures for <Em>income</Em>
 					and <Em>employment</Em>.
 				</p>
 			</div>
@@ -230,20 +223,14 @@
 		<section>
 			<div class="col-medium">
 				<p>
-					There is a strong correlation between the IMD mesasures for <Em
-						>income</Em
-					> and
-					<Em>health</Em>.
+					There is a strong correlation between the IMD mesasures for <Em>income</Em> and <Em>health</Em>.
 				</p>
 			</div>
 		</section>
 		<section>
 			<div class="col-medium">
 				<p>
-					There is a weak correlation between the IMD mesasures for <Em
-						>housing</Em
-					> and
-					<Em>health</Em>.
+					There is a weak correlation between the IMD mesasures for <Em>housing</Em> and <Em>health</Em>.
 				</p>
 			</div>
 		</section>
@@ -304,8 +291,7 @@
 <Section>
 	<h2>This is a full-bleed media demo</h2>
 	<p>
-		Below is an example of a media grid where the column with is set to "full"
-		and the grid width is set to default (100%).
+		Below is an example of a media grid where the column with is set to "full" and the grid width is set to default (100%).
 	</p>
 </Section>
 
@@ -322,8 +308,7 @@
 <Section>
 	<h2>This is a dynamic map section</h2>
 	<p class="mb">
-		The map below will respond to the captions as you scroll down. The mode is
-		default, with captions over the map on any screen size.
+		The map below will respond to the captions as you scroll down. The mode is default, with captions over the map on any screen size.
 	</p>
 </Section>
 
@@ -331,7 +316,7 @@
 	<div slot="background">
 		<figure>
 			<div class="col-full height-full">
-				<Map style={mapstyle} bind:map />
+				<Map style={mapstyle} bind:map interactive={false} />
 			</div>
 		</figure>
 	</div>
@@ -340,25 +325,21 @@
 		<section>
 			<div class="col-medium">
 				<p>
-					This is a map zoomed to the extents of <span class="em em-muted"
-						>England and Wales</span
-					>.
+					This is a map zoomed to the extents of <Em>England and Wales</Em>.
 				</p>
 			</div>
 		</section>
 		<section>
 			<div class="col-medium">
 				<p>
-					This is where <span class="em em-muted">Fareham, Hampshire</span> is on
-					the map.
+					This is where <Em>Fareham, Hampshire</Em> is on the map.
 				</p>
 			</div>
 		</section>
 		<section>
 			<div class="col-medium">
 				<p>
-					This is where <span class="em em-muted">Newport, Gwent</span> is on the
-					map.
+					This is where <Em>Newport, Gwent</Em> is on the map.
 				</p>
 			</div>
 		</section>
@@ -370,8 +351,7 @@
 <Section>
 	<h2>This is a wide media grid demo</h2>
 	<p>
-		Below is an example of a media grid where the column width is set to "wide"
-		and the grid width is set to "narrow".
+		Below is an example of a media grid where the column width is set to "wide" and the grid width is set to "narrow".
 	</p>
 </Section>
 

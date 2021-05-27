@@ -11,9 +11,9 @@
 		], // England & Wales
 	};
 	export let style;
+	export let interactive = true;
 	export let minzoom = 0;
 	export let maxzoom = 14;
-
 	export let zoom = null;
 
 	let container;
@@ -46,7 +46,7 @@
 				style: style,
 				minZoom: minzoom,
 				maxZoom: maxzoom,
-				interactive: false,
+				interactive: interactive,
 				...options,
 			});
 
