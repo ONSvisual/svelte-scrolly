@@ -16,7 +16,7 @@
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/runtime": "^7.12.1",
-    "@onsvisual/svelte-charts": "latest",
+    "@onsvisual/svelte-charts": "0.0.9",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
     "core-js": "3",
