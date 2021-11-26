@@ -16,20 +16,9 @@
 	export let height = 200;
 	export let gap = 12;
 
-	let gridClass = '';
+	let gridClass = grid ? ` grid-${grid}` : '';
 
-	if (grid) {
-    gridClass = ` grid-${grid}`;
-  }
-
-	function supportsGrid() {
-  	let div = document.createElement("div");
-		let val = "1px";
-  	div.style["grid-gap"] = val
-  	return div.style["grid-gap"] === val;
-	}
-
-	let nogrid = !supportsGrid();
+	let nogrid = !("grid-gap" in document.body.style);
 
 	let rowHeight = !Number.isNaN(height) ? height + "px" : height;
 
