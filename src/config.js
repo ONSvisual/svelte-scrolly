@@ -11,68 +11,23 @@ export const themes = {
     'muted': '#bbb',
     'pale': '#333',
     'background': '#222'
+  },
+  'lightblue': {
+    'text': '#206095',
+    'muted': '#707070',
+    'pale': '#f0f0f0',
+    'background': 'rgb(188, 207, 222)'
   }
 }
 
-// CONTENT CONFIG
-export const regions = [
-	{
-		code: 'E12000001',
-		name: 'North East'
-	},
-	{
-		code: 'E12000002',
-		name: 'North West'
-	},
-	{
-		code: 'E12000003',
-		name: 'Yorkshire and The Humber'
-	},
-	{
-		code: 'E12000004',
-		name: 'East Midlands'
-	},
-	{
-		code: 'E12000005',
-		name: 'West Midlands'
-	},
-	{
-		code: 'E12000006',
-		name: 'East of England'
-	},
-	{
-		code: 'E12000007',
-		name: 'London'
-	},
-	{
-		code: 'E12000008',
-		name: 'South East'
-	},
-	{
-		code: 'E12000009',
-		name: 'South West'
-	}
-];
+// DEMO-SPECIFIC CONFIG
 
-export const colors = [
-	[32, 96, 149],
-	[39, 160, 204],
-	[0, 60, 87],
-	[17, 140, 123],
-	[168, 189, 58],
-	[135, 26, 91],
-	[246, 96, 104],
-	[116, 108, 177],
-	[34, 208, 182]
-];
+export const colors = {
+  seq: ['rgb(234, 236, 177)', 'rgb(169, 216, 145)', 'rgb(0, 167, 186)', 'rgb(0, 78, 166)', 'rgb(0, 13, 84)'],
+  cat: ['#206095', '#A8BD3A', '#003C57', '#27A0CC', '#118C7B', '#F66068', '#746CB1', '#22D0B6', 'lightgrey']
+}
 
-export const datakeys = {
-	imd: 'Overall',
-	income: 'Income',
-	employment: 'Employment',
-	education: 'Education',
-	health: 'Health',
-	crime: 'Crime',
-	housing: 'Housing',
-	environment: 'Environment'
-};
+export const units = {
+  'density': 'sq.km',
+  'age_med': 'years'
+}

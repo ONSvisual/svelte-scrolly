@@ -141,6 +141,12 @@ small {
 	margin: 0 24px;
 }
 
+.col-narrow {
+	width: 100%;
+	max-width: 540px;
+	margin: 0 24px;
+}
+
 .height-full {
 	min-height: 100vh;
 }

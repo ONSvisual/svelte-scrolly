@@ -81,6 +81,7 @@
 	export let progress = 0;
 	export let visible = false;
 	export let splitscreen = false; // Add class to allow for split screen option
+	export let id = null;
 
 	let outer;
   let bgContainer; // IE patch. Container binding to update inline style
@@ -173,6 +174,7 @@
 			const bottom = next ? next.getBoundingClientRect().top : fg.bottom;
 
 			offset = (threshold_px - top) / (bottom - top);
+			id = section.dataset.id ? section.dataset.id : null;
 			if (bottom >= threshold_px) break;
 		}
 	}

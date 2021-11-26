@@ -18,7 +18,7 @@
 
 	let gridClass = '';
 
-	if (grid !== '') {
+	if (grid) {
     gridClass = ` grid-${grid}`;
   }
 
@@ -28,8 +28,6 @@
   	div.style["grid-gap"] = val
   	return div.style["grid-gap"] === val;
 	}
-
-	console.log(supportsGrid());
 
 	let nogrid = !supportsGrid();
 

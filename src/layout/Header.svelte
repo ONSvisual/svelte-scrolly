@@ -4,6 +4,7 @@
 
 	export let theme = getContext('theme');
   export let bgimage = null;
+  export let bgcolor = null;
   export let bgfixed = false;
   export let center = true;
   export let short = false;
@@ -31,7 +32,7 @@
   }
 </style>
 
-<header style="color: {themes[theme]['text']}; background-color: {themes[theme]['background']}; {style}" class:short>
+<header style="color: {themes[theme]['text']}; background-color: {bgcolor ? bgcolor : themes[theme]['background']}; {style}" class:short>
 	<div class="v-padded col-wide middle" style="position: relative" class:short class:height-full={!short}>
 		<div class:center>
 			<slot></slot>
