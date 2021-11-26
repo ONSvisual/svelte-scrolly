@@ -19,7 +19,7 @@
 	let gridClass = grid ? ` grid-${grid}` : '';
 
 	let nogrid = !("grid-gap" in document.body.style);
-
+	
 	let rowHeight = !Number.isNaN(height) ? height + "px" : height;
 
 	let gridGap = !Number.isNaN(gap) ? gap + "px" : gap;
@@ -54,20 +54,19 @@
 			divs = arr;
 		}
 		count = divs.length;
-		cols =
-			!minWidth || gridWidth <= minWidth ? 1 : Math.floor(gridWidth / minWidth);
+		cols = !minWidth || gridWidth <= minWidth ? 1 : Math.floor(gridWidth / minWidth);
 		makeCols();
 	}
 
 	function makeCols() {
 		let r =
 			Math.ceil(count / cols) > 1
-				? `-ms-grid-rows: ${rowHeight} (${gap}px ${rowHeight})[${
+				? `-ms-grid-rows: 1fr (${gap}px 1fr)[${
 						Math.ceil(count / cols) - 1
-				  }]; grid-template-rows: ${rowHeight} repeat(${
+				  }]; grid-template-rows: 1fr repeat(${
 						Math.ceil(count / cols) - 1
-				  }, ${gap}px ${rowHeight});`
-				: `-ms-grid-rows: ${rowHeight}; grid-template-rows: ${rowHeight};`;
+				  }, ${gap}px 1fr);`
+				: `-ms-grid-rows: 1fr; grid-template-rows: 1fr;`;
 		let c =
 			cols > 1
 				? `-ms-grid-columns: 1fr (${gap}px 1fr)[${
@@ -78,7 +77,7 @@
 		divs.forEach((div, i) => {
 			let col = (i % cols) * 2 + 1;
 			let row = Math.floor(i / cols) * 2 + 1;
-			div.style.cssText = `-ms-grid-column: ${col}; -ms-grid-row: ${row}; grid-column: ${col}; grid-row: ${row};`;
+			div.style.cssText = `-ms-grid-column: ${col}; -ms-grid-row: ${row}; grid-column: ${col}; grid-row: ${row}; min-height: ${rowHeight};`;
 		});
 	}
 

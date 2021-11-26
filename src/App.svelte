@@ -287,11 +287,11 @@
 	</p>
 </Section>
 
+{#if data.region.indicators}
 <Media
 	col="medium"
 	caption="Source: ONS mid-year population estimates."
 >
-	{#if data.region.indicators}
 	<div class="chart-sml">
 		<BarChart
 			data={[...data.region.indicators].sort((a, b) => a.pop - b.pop)}
@@ -301,8 +301,8 @@
 			height={350} padding={{top: 0, bottom: 15, left: 140, right: 0}}
 			area={false} title="Population by region/nation, 2020"/>
 	</div>
-	{/if}
 </Media>
+{/if}
 
 <Divider/>
 
@@ -313,12 +313,12 @@
 	</p>
 </Section>
 
+{#if data.region.timeseries && data.region.indicators}
 <Media
 	col="wide"
 	grid="narrow" gap={20}
 	caption="Source: ONS mid-year population estimates."
 >
-	{#if data.region.timeseries && data.region.indicators}
 	{#each [...data.region.indicators].sort((a, b) => b.pop - a.pop) as region}
 	<div class="chart-sml">
 		<LineChart
@@ -332,8 +332,8 @@
 			area={false} title={region.name}/>
 	</div>
 	{/each}
-	{/if}
 </Media>
+{/if}
 
 <Divider />
 
