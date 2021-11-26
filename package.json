@@ -1,7 +1,7 @@
 {
   "name": "@onsvisual/svelte-scrolly",
   "homepage": "http://onsvisual.github.io/svelte-scrolly",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",

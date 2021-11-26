@@ -177,7 +177,7 @@
 			}
 		});
 	}
-	$: id && runActions(map ? ['chart', 'map'] : []); // Run above code when 'id' object changes
+	$: id && runActions(Object.keys(actions)); // Run above code when 'id' object changes
 
 	// INITIALISATION CODE
 	datasets.forEach(geo => {
@@ -540,9 +540,12 @@
 		</section>
 		<section data-id="map03">
 			<div class="col-medium">
+				<!-- This gets the data object for the district with the oldest median age -->
+				{#each [[...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0]] as district}
 				<p>
-					The map is now zoomed on <Em color={colors.seq[4]}>{[...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0].name}</Em>, the district with the oldest median age, {[...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0].age_med} years.
+					The map is now zoomed on <Em color={district.age_med_color}>{district.name}</Em>, the district with the oldest median age, {district.age_med} years.
 				</p>
+				{/each}
 			</div>
 		</section>
 		<section data-id="map04">
