@@ -1,5 +1,6 @@
-
 # Scrollytelling Template
+
+**‼️ Please note that this template has been archived and is no longer maintained. Newer [SvelteKit templates are available here](https://github.com/ONSdigital/sveltekit-starter).**
 
 A component-based rich media / scrollytelling template made with Svelte. ([View demo](https://onsvisual.github.io/svelte-scrolly)).
 
